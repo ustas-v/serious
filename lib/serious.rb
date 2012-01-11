@@ -66,25 +66,25 @@ class Serious < Sinatra::Base
   get %r{^/(\d{4})[/]{0,1}(\d{0,2})[/]{0,1}(\d{0,2})[/]{0,1}$} do
     selection = params[:captures].reject {|s| s.strip.length == 0 }.map {|n| n.length == 1 ? "%02d" % n : n}
     @articles = Article.find(*selection)
-    @title = "Archives for #{selection.join("-")}"
+    @title = "Все посты с датой #{selection.join("-")}"
     erb :archives
   end
   
   get "/archives" do
     @articles = Article.all
-    @title = "Archives"
+    @title = "Список всех постов"
     erb :archives
   end
 
   get "/archives/:tag" do
     @articles = Article.all :tag => params[:tag]
-    @title = "Archives for #{params[:tag]}"
+    @title = "Все посты с тегом \"#{params[:tag]}\""
     erb :archives
   end
   
   get "/pages" do
     @articles = Page.all
-    @title = "Pages"
+    @title = "Страницы"
     erb :archives
   end
   

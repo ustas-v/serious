@@ -45,7 +45,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2009", "#container h2:first"
+    should_contain_text "Все посты с датой 2009", "#container h2:first"
     should_contain_elements 3, "ul.archives li"
     should_contain_text "Merry Christmas! ☃", "ul.archives li:first"
     should_contain_text "Ruby is the shit!", "ul.archives"
@@ -57,7 +57,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2009-12", "#container h2:first"
+    should_contain_text "Все посты с датой 2009-12", "#container h2:first"
     should_contain_text 'December 24th 2009', "ul.archives li"
     should_contain_elements 2, "ul.archives li"
     should_contain_text "Merry Christmas! ☃", "ul.archives li:first"
@@ -69,7 +69,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2009-12-11", "#container h2:first"
+    should_contain_text "Все посты с датой 2009-12-11", "#container h2:first"
     should_contain_elements 1, "ul.archives li"
     should_contain_text "Ruby is the shit!", "ul.archives li:first"
   end  
@@ -79,7 +79,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2000", "#container h2:first"
+    should_contain_text "Все посты с датой 2000", "#container h2:first"
     should_contain_elements 1, "ul.archives li"
     should_contain_text "Disco 2000", "ul.archives li:first"
   end  
@@ -89,7 +89,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2005", "#container h2:first"
+    should_contain_text "Все посты с датой 2005", "#container h2:first"
     should_contain_elements 0, "ul.archives li"
   end  
   
@@ -98,7 +98,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2000-01", "#container h2:first"
+    should_contain_text "Все посты с датой 2000-01", "#container h2:first"
     should_contain_elements 1, "ul.archives li"
     should_contain_text "Disco 2000", "ul.archives li:first"
   end
@@ -108,7 +108,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for 2000-01-01", "#container h2:first"
+    should_contain_text "Все посты с датой 2000-01-01", "#container h2:first"
     should_contain_elements 1, "ul.archives li"
     should_contain_text "Disco 2000", "ul.archives li:first"
   end
@@ -118,7 +118,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives", "#container h2:first"
+    should_contain_text "Список всех постов", "#container h2:first"
     should_contain_elements 4, "ul.archives li"
     should_contain_text "Merry Christmas! ☃", "ul.archives li:first"
     should_contain_text "Ruby is the shit!", "ul.archives"
@@ -131,7 +131,7 @@ class TestSerious < Test::Unit::TestCase
     
     should_respond_with 200
     should_set_cache_control_to 300
-    should_contain_text "Archives for christmas", "#container h2:first"
+    should_contain_text "Все посты с тегом \"christmas\"", "#container h2:first"
     should_contain_elements 1, "ul.archives li"
     should_contain_text "Merry Christmas! ☃", "ul.archives li:first"
   end
