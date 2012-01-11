@@ -19,7 +19,8 @@ class Serious::Article
         article = new(article_path)
         if article && (Serious.future || article.date <= now)
           next article unless options[:tag]
-          article if article.tags.include? options[:tag]
+          article.tags.map! { |tag| tag.gsub ' ', '-' }
+          article if article.tags.include? options[:tag].gsub ' ', '-'
         end
       end.compact[options[:offset]...options[:limit]+options[:offset]]
       
