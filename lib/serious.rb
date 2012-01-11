@@ -26,7 +26,6 @@ class Serious < Sinatra::Base
   
   before do
     headers['Cache-Control'] = "public, max-age=#{Serious.cache_timeout}"
-    params[:tag].gsub! ' ', '-' if params.has_key? :tag
   end
   
   helpers do
@@ -77,6 +76,11 @@ class Serious < Sinatra::Base
   end
 
   get "/archives/:tag" do
+    if params[:tag] && params[:tag].match(/ /)
+      params[:tag].gsub! ' ', '-'
+      redirect "/archives/#{params[:tag]}"
+    end
+
     @articles = Article.all :tag => params[:tag]
     @title = "Все посты с тегом \"#{params[:tag]}\""
     erb :archives
