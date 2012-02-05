@@ -33,7 +33,7 @@ class String
   def slugize
     self.downcase.gsub(/[^a-z0-9\-]/, '-').squeeze('-').gsub(/^\-/, '').gsub(/\-$/, '')
   end
-  
+
   if "1.9".respond_to?(:encoding)
     def force_utf8
       self.force_encoding('UTF-8')
@@ -41,6 +41,6 @@ class String
   else
     def force_utf8
       self
-    end 
+    end
   end
 end

@@ -29,11 +29,11 @@ namespace :article do
         puts "  Errors: #{article.errors.sort.join(", ")}"
       end
     end
-    
+
     puts
     puts "Validated #{Serious::Article.all.length} article(s)!"
   end
-  
+
   desc "Creates a new article"
   task :create do
     title = ask('Title?')
@@ -48,13 +48,13 @@ namespace :article do
     else
       article_date = Date.today
     end
-    
+
     filename = "#{article_date}-#{title.slugize}.txt"
     File.open(File.join(Serious.articles, filename), "w") do |article|
       article.puts "title: #{title}", ""
       article.puts "Summary here", "~", "Body here"
     end
-    
+
     puts "Created article #{filename}!"
   end
 end

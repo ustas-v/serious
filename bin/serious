@@ -84,7 +84,7 @@ File.open('config.ru', 'w+') do |config|
   config.puts "Serious.set :title, '#{DIRNAME}'"
   config.puts "Serious.set :author, 'Your Name here'"
   config.puts "Serious.set :url, 'http://#{DIRNAME}.heroku.com'"
-  
+
   if public? and views?
     config.puts "Serious.set :root, Dir.getwd"
   elsif public?
@@ -127,7 +127,7 @@ if heroku?
     else
       puts "ERROR: Failed to create heroku app"
     end
-    
+
   else
     puts "ERROR: Can't create heroku app without git!"
   end
