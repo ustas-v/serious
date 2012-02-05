@@ -404,6 +404,10 @@ Your visitors may to visit the tagged archives by URL:
 Alexis Sellier for toto, the main inspiration for this gem
 Ryan Bates for the great coderay css
 
+== Build Status {<img src="https://secure.travis-ci.org/eveel/serious.png"/>}[http://travis-ci.org/eveel/serious]
+
+== Dependency Status {<img src="https://gemnasium.com/eveel/serious.png?travis"/>}[https://gemnasium.com/eveel/serious]
+
 == Copyright
 
 Serious is made by {fascinated people}[https://github.com/eveel/serious]
