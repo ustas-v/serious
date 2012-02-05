@@ -1,6 +1,6 @@
 = Serious
 
-Serious is a blog engine inspired by other filesystem-based engines like jekyll (http://jekyllrb.com/)
+Serious is a blog engine inspired by other filesystem-based engines like jekyll (http://jekyllrb.com)
 and toto (http://cloudhead.io/toto) and is based upon Sinatra and rack, thus can be hosted
 very easily (and for free) on heroku (http://heroku.com).
 
@@ -406,4 +406,5 @@ Ryan Bates for the great coderay css
 
 == Copyright
 
-Copyright (c) 2010 Christoph Olszowka. See LICENSE for details.
+Copyright (c) 2010-2012 Christoph Olszowka, Dmitry A. Ustalov, and
+contributors. See LICENSE for details.

@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "serious"
   s.version     = SERIOUS_VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Christoph Olszowka"]
-  s.email       = ["christoph at olszowka de"]
-  s.homepage    = "https://github.com/colszowka/serious"
-  s.summary     = %Q{Serious is a simple, file-driven blog engine inspired by toto and driven by sinatra with an emphasis on easy setup}
-  s.description = %Q{Serious is a simple, file-driven blog engine inspired by toto and driven by sinatra with an emphasis on easy setup}
+  s.authors     = [ "Dmitry A. Ustalov", "Christoph Olszowka" ]
+  s.email       = [ "dmitry@eveel.ru", "christoph at olszowka de" ]
+  s.homepage    = "https://github.com/eveel/serious"
+  s.summary     = %Q{Serious is a simple, file-driven blog engine that is driven by Sinatra}
+  s.description = %Q{Serious is a simple, file-driven blog engine inspired by Toto and driven by Sinatra with an emphasis on easy setup}
 
   s.rubyforge_project = "serious"
   
