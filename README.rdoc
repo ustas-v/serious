@@ -358,25 +358,27 @@ Serious will fallback on this default configuration. You can change the global s
 
 === Tags
 
-You're welcome to add some tags to your posts. Just define the necessary section
-at your post metadata:
+You're welcome to add the real tags to your posts. Just define the necessary
+section at your post metadata:
 
     title: Hello, guys!
     tags:
     - friendship
     - magic
 
-After this, you may to use the Serious::Article#tags method to fetch the tags
-of the post. More than all, Serious::Article.tags method is available and
-designed to make your own tag cloud easily:
+After this, you may to use the <code>Serious::Article#tags</code> method to
+fetch the tags of the post. More than all, <code>Serious::Article.tags</code>
+method is available and designed to make your own tag cloud easily:
 
     Serious::Article.tags # => {"friendship"=>1, "magic"=>1}
 
-The Serious::Article.all method is also modified to perform tagged search:
+The <code>Serious::Article.all</code> method is also modified to perform
+tagged search:
 
     Serious::Article.all :tag => "magic" # => [ ... ]
 
-Your visitors may to visit the tagged archives by URL: /archives/:tag.
+Your visitors may to visit the tagged archives by URL:
+<code>/archives/:tag</code>.
 
 == TODO
 
