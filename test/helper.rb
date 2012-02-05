@@ -26,8 +26,8 @@ class Test::Unit::TestCase
 
   def self.should_contain_elements(count, selector)
     should "contain #{count} elements in '#{selector}'" do
-      doc = Hpricot.parse(last_response.body)
-      assert_equal count, (doc/selector).size
+      doc = Nokogiri::HTML(last_response.body)
+      assert_equal count, (doc/selector).count
     end
   end
 
@@ -39,21 +39,21 @@ class Test::Unit::TestCase
 
   def self.should_contain_text(text, selector)
     should "contain '#{text}' in '#{selector}'" do
-      doc = Hpricot.parse(last_response.body)
+      doc = Nokogiri::HTML(last_response.body)
       assert_match(/#{text}/, (doc/selector).inner_html.force_utf8)
     end
   end
 
   def self.should_not_contain_text(text, selector)
     should "not contain '#{text}' in '#{selector}'" do
-      doc = Hpricot.parse(last_response.body)
+      doc = Nokogiri::HTML(last_response.body)
       assert_no_match(/#{text}/, (doc/selector).inner_html.force_utf8)
     end
   end
 
   def self.should_contain_attribute(attribute, text, selector)
     should "contain '#{text}' in '#{selector}' #{attribute}" do
-      doc = Hpricot.parse(last_response.body)
+      doc = Nokogiri::HTML(last_response.body)
       assert_equal text, (doc/selector).first[attribute]
     end
   end

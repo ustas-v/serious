@@ -18,7 +18,10 @@ class TestSerious < Test::Unit::TestCase
     should_contain_text "Merry Christmas! ☃", "ul#articles li:first"
     should_contain_text "Merry christmas, dear reader! ☃", "ul#articles li:first"
     should_contain_text "December 24th 2009", "ul#articles li:first .date"
+
     should_contain_elements 2, "ul#articles li:first .tags a"
+    should_contain_text "christmas", "ul#articles li:first .tags a:first"
+    should_contain_text "bar", "ul#articles li:first .tags a:last"
 
     should_not_contain_text "This ain't rails, yet it has ☃!", "ul#articles li:first"
 
@@ -29,7 +32,7 @@ class TestSerious < Test::Unit::TestCase
     should_contain_text "Testing Custom Summary Delimiter", "ul#articles"
     should_contain_text "Serious Test Blog", "head title"
 
-    should_contain_elements 2, "ul.archives:first li"
+    should_contain_elements 2, "ul.archives li:first"
     should_contain_text "Foo Bar", "ul.archives li:first"
 
     should_contain_text "Pages", "h3"
@@ -201,6 +204,10 @@ class TestSerious < Test::Unit::TestCase
       get '/3010/04/20/we-come-in-peace'
     end
 
+    teardown do
+      app.set :future, true
+    end
+
     should_respond_with 404
     should_set_cache_control_to 300
     should_contain_text "The requested page could not be found!", "#container h2:first"
@@ -211,6 +218,10 @@ class TestSerious < Test::Unit::TestCase
     setup do
       app.set :future, true
       get '/3010/04/20/we-come-in-peace'
+    end
+
+    teardown do
+      app.set :future, false
     end
 
     should_respond_with 200
