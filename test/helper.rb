@@ -1,17 +1,15 @@
 # encoding: utf-8
+
 ENV['RACK_ENV'] = 'test'
+
 require 'rubygems'
 require 'bundler/setup'
+Bundler.require :development
+
 require 'simplecov'
 SimpleCov.start
 
 require 'serious'
-
-require 'test/unit'
-require 'shoulda'
-require 'rack/test'
-require 'hpricot'
-
 
 class Test::Unit::TestCase
   include Rack::Test::Methods
