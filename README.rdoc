@@ -410,7 +410,7 @@ Ryan Bates for the great coderay css
 
 == Copyright
 
-Serious is made by {fascinated people}[https://github.com/eveel/serious]
+Serious is made by {fascinated people}[https://github.com/eveel/serious/contributors]
 and proudly released under the MIT license:
 
 * http://www.opensource.org/licenses/MIT
