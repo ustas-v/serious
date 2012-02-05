@@ -367,7 +367,7 @@ section at your post metadata:
     - magic
 
 After this, you may to use the <code>Serious::Article#tags</code> method to
-fetch the tags of the post. More than all, <code>Serious::Article.tags</code>
+fetch the tags of the post. More than all, the <code>Serious::Article.tags</code>
 method is available and designed to make your own tag cloud easily:
 
     Serious::Article.tags # => {"friendship"=>1, "magic"=>1}
