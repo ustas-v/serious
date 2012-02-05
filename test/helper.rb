@@ -9,6 +9,7 @@ Bundler.require :development
 require 'simplecov'
 SimpleCov.start
 
+require 'rack/test'
 require 'serious'
 
 class Test::Unit::TestCase
