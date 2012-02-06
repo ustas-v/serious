@@ -55,11 +55,7 @@ class Serious::Article
     # Lists all the tags of all articles (very fucking expensive task at first time).
     #
     def tags
-      @tags ||= find.map(&:tags).flatten.inject({}) do |tags, tag|
-        tags[tag] ||= 0
-        tags[tag] += 1
-        tags
-      end
+      @tags ||= find.map(&:tags).flatten.inject(Hash.new(0)) {|freqs, tag| freqs[tag] += 1; freqs}
     end
 
     private
