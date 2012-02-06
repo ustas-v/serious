@@ -98,8 +98,8 @@ The Rakefile, which is obviously totally optional but highly recommended looks l
 
 == Supported Rubies
 
-The gem tests are run against 1.8.7, REE, 1.9.1 and 1.9.2, so Serious should run fine at least
-on those interpreters - it is highly recommended to go with 1.9.2 though.
+The gem tests are run against 1.9.1, 1.9.2, and 1.9.3, so Serious should run fine at least
+on those interpreters - it is highly recommended to go with 1.9.3 though.
 
 == Creating heroku app manually
 
