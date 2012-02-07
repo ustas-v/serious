@@ -365,11 +365,11 @@ class TestArticle < Test::Unit::TestCase
       setup { @article.valid? }
 
       should "include 'Failed to format body' in errors" do
-        assert @article.errors.include?('Failed to format body'), @article.errors.inspect
+        assert @article.errors.include?(I18n.t('serious.article.errors.body_failed')), @article.errors.inspect
       end
 
       should "include 'Failed to format summary' in errors" do
-        assert @article.errors.include?('Failed to format summary'), @article.errors.inspect
+        assert @article.errors.include?(I18n.t('serious.article.errors.summary_failed')), @article.errors.inspect
       end
     end
   end
@@ -386,11 +386,11 @@ class TestArticle < Test::Unit::TestCase
       setup { @article.valid? }
 
       should "include 'No title given' in errors" do
-        assert @article.errors.include?('No title given'), @article.errors.inspect
+        assert @article.errors.include?(I18n.t('serious.article.errors.no_title')), @article.errors.inspect
       end
 
       should "not include 'No author given' in errors" do
-        assert !@article.errors.include?('No author given'), @article.errors.inspect
+        assert !@article.errors.include?(I18n.t('serious.article.errors.no_author')), @article.errors.inspect
       end
 
       context "after setting @author to '' and revalidating" do
@@ -400,11 +400,12 @@ class TestArticle < Test::Unit::TestCase
         end
 
         should "include 'No title given' in errors" do
-          assert @article.errors.include?('No title given'), @article.errors.inspect
+          I18n.t('serious.article.errors.no_title')
+          assert @article.errors.include?(I18n.t('serious.article.errors.no_title')), @article.errors.inspect
         end
 
         should "include 'No author given' in errors" do
-          assert @article.errors.include?('No author given'), @article.errors.inspect
+          assert @article.errors.include?(I18n.t('serious.article.errors.no_author')), @article.errors.inspect
         end
       end
     end
@@ -429,7 +430,7 @@ class TestArticle < Test::Unit::TestCase
       setup { @article.valid? }
 
       should "include 'Wrong tags given' in errors" do
-        assert @article.errors.include?('Wrong tags given'), @article.errors.inspect
+        assert @article.errors.include?(I18n.t('serious.article.errors.wrong_tags')), @article.errors.inspect
       end
 
       context "after setting tags to [1, 'foo'] and revalidating" do
@@ -439,7 +440,7 @@ class TestArticle < Test::Unit::TestCase
         end
 
         should "include 'Wrong tags given' in errors" do
-          assert @article.errors.include?('Wrong tags given'), @article.errors.inspect
+          assert @article.errors.include?(I18n.t('serious.article.errors.wrong_tags')), @article.errors.inspect
         end
       end
     end
