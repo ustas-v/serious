@@ -1,0 +1,16 @@
+en:
+  serious:
+    views:
+      archives:
+        general: 'Archives'
+        dated: 'Archives for %{date}'
+        tagged: 'Archives for "%{tag}" tag'
+      pages: 'Pages'
+    article:
+      errors:
+        no_title: 'No title given'
+        no_author: 'No author given'
+        wrong_tags: 'Wrong tags given'
+        summary_failed: 'Failed to format summary'
+        body_failed: 'Failed to format body'
+        invalid_filename: 'Failed to extract date or permalink from %{path}'

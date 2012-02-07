@@ -1,0 +1,16 @@
+ru:
+  serious:
+    views:
+      archives:
+        general: 'Все посты'
+        dated: 'Все посты с датой %{date}'
+        tagged: 'Все посты с тегом "%{tag}"'
+      pages: 'Страницы'
+    article:
+      errors:
+        no_title: 'Заголовок не указан'
+        no_author: 'Автор не указан'
+        wrong_tags: 'Теги перечислены неверно'
+        summary_failed: 'Не получилось отформатировать сводку поста'
+        body_failed: 'Не получилось отформатировать тело поста'
+        invalid_filename: 'Не получилось извлечь дату или URL из файла %{path}'
