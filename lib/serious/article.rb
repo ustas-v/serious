@@ -134,20 +134,29 @@ class Serious::Article
   #
   def valid?
     @errors = []
-    errors << "No title given" unless title.kind_of?(String) and title.length > 0
-    errors << "No author given" unless author.kind_of?(String) and author.length > 0
-    errors << "Wrong tags given" unless tags.kind_of?(Array) and tags_are_strings?
+
+    unless title.kind_of?(String) and title.length > 0
+      errors << I18n.t('serious.article.errors.no_title')
+    end
+
+    unless author.kind_of?(String) and author.length > 0
+      errors << I18n.t('serious.article.errors.no_author')
+    end
+
+    unless tags.kind_of?(Array) and tags_are_strings?
+      errors << I18n.t('serious.article.errors.wrong_tags')
+    end
 
     begin
       summary.formatted
     rescue => err
-      errors << "Failed to format summary"
+      errors << I18n.t('serious.article.errors.summary_failed')
     end
 
     begin
       body.formatted
     rescue => err
-      errors << "Failed to format body"
+      errors << I18n.t('serious.article.errors.body_failed')
     end
   ensure
     return errors.length == 0
@@ -161,7 +170,8 @@ class Serious::Article
       @date = Date.new(match[1].to_i, match[2].to_i, match[3].to_i)
       @permalink = match[4]
     rescue NoMethodError => err
-      raise InvalidFilename, "Failed to extract date or permalink from #{File.basename(path)}"
+      raise InvalidFilename, I18n.t('serious.article.errors.body_failed',
+        :path => File.basename(path))
     end
 
     # Will check that every tag is a String
