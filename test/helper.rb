@@ -9,7 +9,9 @@ require 'bundler/setup'
 Bundler.require :development
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/test/'
+end
 
 require 'rack/test'
 require 'serious'
