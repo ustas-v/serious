@@ -380,6 +380,36 @@ tagged search:
 Your visitors may to visit the tagged archives by URL:
 <code>/archives/:tag</code>.
 
+== Internationalization
+
+It is possible to perform basic internationalization of the
+Serious-driven blog. Just add the <code>locales</code> directory
+into your code and create the <code>*.yml</code> files with following
+content:
+
+    en:
+      serious:
+        views:
+          pages: 'Pages'
+
+Yes, this is very similar to Rails I18n (actually, the same `i18n` gem
+is used). The entire list of translatable strings is available at
+`lib/serious/locale/en.yml` file in the Serious repository.
+
+These translations can be used both to render traslated strings at
+views:
+
+    t('serious.views.pages')
+
+and to use 'em at your customizations in Ruby:
+
+    I18n.t('serious.views.pages')
+
+The default locale is <code>:en</code>. This can be changed during the
+Serious initialization phase by implicit set:
+
+    I18n.locale = :ru
+
 == TODO
 
 * unescaped special chars in yaml front matter can lead to errors
