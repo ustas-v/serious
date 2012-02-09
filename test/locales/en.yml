@@ -1,0 +1,5 @@
+en:
+  serious:
+    article:
+      errors:
+        no_title: 'Title is absent'
