@@ -380,7 +380,7 @@ tagged search:
 Your visitors may to visit the tagged archives by URL:
 <code>/archives/:tag</code>.
 
-== Internationalization
+=== Internationalization
 
 It is possible to perform basic internationalization of the
 Serious-driven blog. Just add the <code>locales</code> directory
