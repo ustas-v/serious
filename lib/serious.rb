@@ -16,7 +16,8 @@ class Serious < Sinatra::Base
 
   set :articles, Proc.new { File.join(Dir.getwd, 'articles') }
   set :pages, Proc.new { File.join(Dir.getwd, 'pages') }
-  set :static, true # Required to serve static files, see http://www.sinatrarb.com/configuration.html
+  # Required to serve static files, see http://www.sinatrarb.com/configuration.html
+  set :static, true
   set :future, false
 
   not_found do
@@ -28,13 +29,20 @@ class Serious < Sinatra::Base
   end
 
   helpers do
+    # i18n
+    def t *args
+      I18n.t *args
+    end
+
     # Helper for rendering partial _archives
     def render_archived(articles)
-      render :erb, :'_archives', :locals => { :articles => articles }, :layout => false
+      render :erb, :'_archives', :locals => { :articles => articles },
+        :layout => false
     end
 
     def render_article(article, summary_only=false)
-      render :erb, :'_article', :locals => { :article => article, :summary_only => summary_only }, :layout => !summary_only
+      render :erb, :'_article', :locals => { :article => article,
+        :summary_only => summary_only }, :layout => !summary_only
     end
 
     def render_partial(name)
@@ -45,32 +53,43 @@ class Serious < Sinatra::Base
   # Index page
   get '/' do
     @recent = Article.all(:limit => Serious.items_on_index)
-    @archived = Article.all(:limit => Serious.archived_on_index, :offset => Serious.items_on_index)
+    @archived = Article.all(:limit => Serious.archived_on_index,
+      :offset => Serious.items_on_index)
+
     erb :index
   end
 
   get '/atom.xml' do
     @articles = Article.all(:limit => Serious.items_in_feed)
+
     builder :atom
   end
 
   # Specific article route
   get %r{^/(\d{4})/(\d{1,2})/(\d{1,2})/([^\/]+)} do
     halt 404 unless @article = Article.first(*params[:captures])
+
     render_article @article
   end
 
   # Archives route
   get %r{^/(\d{4})[/]{0,1}(\d{0,2})[/]{0,1}(\d{0,2})[/]{0,1}$} do
-    selection = params[:captures].reject {|s| s.strip.length == 0 }.map {|n| n.length == 1 ? "%02d" % n : n}
+    selection = params[:captures].reject do |s|
+      s.strip.length == 0
+    end.map do |n|
+      n.length == 1 ? "%02d" % n : n
+    end
+
     @articles = Article.find(*selection)
-    @title = "Все посты с датой #{selection.join("-")}"
+    @title = t('serious.views.archives.dated', :date => selection.join('-'))
+
     erb :archives
   end
 
   get "/archives" do
     @articles = Article.all
-    @title = "Список всех постов"
+    @title = t('serious.views.archives.general')
+
     erb :archives
   end
 
@@ -81,13 +100,15 @@ class Serious < Sinatra::Base
     end
 
     @articles = Article.all :tag => params[:tag]
-    @title = "Все посты с тегом \"#{params[:tag]}\""
+    @title = t('serious.views.archives.tagged', :tag => params[:tag])
+
     erb :archives
   end
 
   get "/pages" do
     @articles = Page.all
-    @title = "Страницы"
+    @title = t('serious.views.pages')
+
     erb :archives
   end
 
@@ -98,8 +119,10 @@ class Serious < Sinatra::Base
 end
 
 require 'serious/version'
+require 'serious/i18n'
 require 'serious/article'
 require 'serious/page'
+
 # Set up default stupid_formatter chain
 StupidFormatter.chain = [StupidFormatter::Erb, StupidFormatter::RDiscount]
 
@@ -108,9 +131,12 @@ Serious.set :root, File.join(File.dirname(__FILE__), 'site')
 Serious.set :title, "Serious"
 Serious.set :author, "unknown"
 Serious.set :url, 'http://localhost:3000'
-Serious.set :items_in_feed, 25 # Number of items to display in atom feed
-Serious.set :items_on_index, 3 # Number of items to display with summary on main page
-Serious.set :archived_on_index, 10 # Number of items to display small (title only) on main page
+# Number of items to display in atom feed
+Serious.set :items_in_feed, 25
+# Number of items to display with summary on main page
+Serious.set :items_on_index, 3
+# Number of items to display small (title only) on main page
+Serious.set :archived_on_index, 10
 Serious.set :cache_timeout, 300
 Serious.set :run, false
 Serious.set :environment, :test

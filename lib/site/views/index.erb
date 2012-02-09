@@ -5,8 +5,8 @@
     </li>
   <% end %>
 </ul>
-<h3><a href="/archives">Older posts</a></h3>
+<h3><a href="/archives"><%= t('serious.views.archives.general') %></a></h3>
 <%= render_archived @archived %>
 
-<h3><a href="/pages">Pages</a></h3>
+<h3><a href="/pages"><%= t('serious.views.pages') %></a></h3>
 <%= render_archived Serious::Page.all %>
