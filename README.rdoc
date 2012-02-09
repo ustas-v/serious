@@ -406,9 +406,9 @@ and to use 'em at your customizations in Ruby:
     I18n.t('serious.views.pages')
 
 The default locale is <code>:en</code>. This can be changed during the
-Serious initialization phase by implicit set:
+Serious initialization phase by implicit assignment:
 
-    I18n.locale = :ru
+    I18n.default_locale = :ru
 
 == TODO
 
