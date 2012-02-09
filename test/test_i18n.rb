@@ -14,6 +14,11 @@ class TestI18n < Test::Unit::TestCase
       I18n.reload!
     end
 
+    should 'use English by default' do
+      assert_equal :en, I18n.locale
+      assert_equal :en, I18n.default_locale
+    end
+
     context 'English' do
       setup do
         @old_locale = I18n.locale
