@@ -8,9 +8,11 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require :development
 
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/test/'
+unless 'true' == ENV['TRAVIS']
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/test/'
+  end
 end
 
 require 'rack/test'
